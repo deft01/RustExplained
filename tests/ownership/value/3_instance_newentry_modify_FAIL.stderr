@@ -1,0 +1,20 @@
+error[E0382]: assign to part of moved value: `target`
+  --> tests/ownership/value/3_instance_newentry_modify_FAIL.rs:11:5
+   |
+7  |     let mut target = Boo { u: 0 };
+   |         ---------- move occurs because `target` has type `Boo`, which does not implement the `Copy` trait
+8  |
+9  |     let target_entry = target;
+   |                        ------ value moved here
+10 |
+11 |     target.u = 42;
+   |     ^^^^^^^^^^^^^ value partially assigned here after move
+   |
+note: if `Boo` implemented `Clone`, you could clone the value
+  --> tests/ownership/value/3_instance_newentry_modify_FAIL.rs:4:1
+   |
+4  | struct Boo { u: usize }
+   | ^^^^^^^^^^ consider implementing `Clone` for this type
+...
+9  |     let target_entry = target;
+   |                        ------ you could clone this value

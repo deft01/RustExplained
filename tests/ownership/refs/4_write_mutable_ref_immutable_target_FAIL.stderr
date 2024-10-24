@@ -1,0 +1,17 @@
+error[E0596]: cannot borrow `target` as mutable, as it is not declared as mutable
+ --> tests/ownership/refs/4_write_mutable_ref_immutable_target_FAIL.rs:4:9
+  |
+4 |     let target: usize = 0;
+  |         ^^^^^^ not mutable
+5 |
+6 |     let ref_foo = &mut target;
+  |                   ----------- cannot borrow as mutable
+7 |     let ref_bar = &mut target;
+  |                   ----------- cannot borrow as mutable
+8 |     let ref_baz = &mut target;
+  |                   ----------- cannot borrow as mutable
+  |
+help: consider changing this to be mutable
+  |
+4 |     let mut target: usize = 0;
+  |         +++

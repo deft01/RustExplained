@@ -1,0 +1,10 @@
+error[E0594]: cannot assign to `*ref_baz`, which is behind a `&` reference
+  --> tests/ownership/refs/2_write_on_readonly_ref_FAIL.rs:10:5
+   |
+10 |     *ref_baz = 42;
+   |     ^^^^^^^^^^^^^ `ref_baz` is a `&` reference, so the data it refers to cannot be written
+   |
+help: consider changing this to be a mutable reference
+   |
+8  |     let ref_baz = &mut target;
+   |                    +++
